@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 
 	if (argc == 1)
 		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
-	else if (argc > 2)
+	else if (argc > 1)
 	{
 		j = 0;
 		while (++j < argc)
