@@ -1,19 +1,31 @@
-# the compiler: gcc for C program, define as g++ for C++
-CPP = clang++
- 
+# the compiler
+CC = clang++
 # compiler flags:
 #  -Wall  - this flag is used to turn on most compiler warnings
 #  - Wextra - this flag is used to enables some extra warning flags that are not enabled by -Wall
 #  - Werror - every warning is treated as an error.
-CPPFLAGS  = -Wall -Wextra -Werror
- 
+CCFLAGS  = -Wall -Wextra -Werror
 # The build target
 TARGET = megaphone
- 
-all: $(TARGET)
- 
-$(TARGET): $(TARGET).cpp
-	@$(CPP) $(CPPFLAGS) -o $(TARGET) $(TARGET).cpp
- 
+
+SOURCES = megaphone.cpp
+
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: $(SOURCES) $(TARGET)
+	
+$(TARGET):$(OBJECTS)
+	@$(CC) $(OBJECTS) -o $@
+
+.cpp.o:
+	@$(CC) $(CCFLAGS)  -c -o $@ $^
+
 clean:
-	@rm $(TARGET)
+	@/bin/rm -f $(OBJECTS)
+
+fclean: clean
+	@/bin/rm $(TARGET)
+
+re: fclean all
+
+.PHONY: all clean fclean re
