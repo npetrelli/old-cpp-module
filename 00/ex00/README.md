@@ -1,4 +1,4 @@
-***The program reads arguments, printing, converting characters from lower case to upper case, using standard Input and Output in C++***
+The program reads arguments, printing, converting characters from lower case to upper case, using standard Input and Output in C++
 
 
 $>./megaphone "shhhhh... I think the students are asleep..."
